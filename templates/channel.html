@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+      <script src="{{ url_for('static', filename='index.js') }}"></script>
+      <title>{{ channel }}</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+      <style>
+          div {
+            padding: 5px;
+            text-align: center;
+          }
+          ul {
+            list-style: none;
+            padding: 0px;
+          }
+          #form2 {
+            padding: 15px;
+          }
+          #messages {
+            border: 2px solid grey;
+            padding: 0px;
+          }
+          li {
+            border-width:5px;
+            border-style:inset;
+            background-color: black;
+            color: white;
+          }
+          p {
+            text-align: left;
+            color: white;
+            padding:0px;
+          }
+          .timestamp {
+            text-align: right;
+            color:white;
+            padding:0px
+          }
+          a {
+            color:white;
+            padding:0px;
+          }
+          .shout {
+            background-color: red;
+          }
+      </style>
+    </head>
+    <body>
+      <div>
+        <h1>{{ channel }}</h1>
+        <hr>
+        <ul id="messages">
+            {% for msg in list_of_messages %}
+              <li>
+                <div>
+                  <h4>{{ msg.user }}</h4>
+                  <p>{{ msg.content }}</p>
+                  <p class="timestamp">{{ msg.datetime }}</p>
+                </div>
+              </li>
+            {% endfor %}
+        </ul>
+        <form id="form2">
+          <input id="new_message" autocomplete="off" autofocus placeholder="Type your message here" type="text">
+          <input id="submit2" type="submit" value="Send!">
+        </form>
+        <form id="form3">
+          <input id="new_shout" autocomplete="off" autofocus placeholder="Make a general announcement" type="text">
+          <input id="submit3" type="submit" value="Submit!">
+        </form>
+      </div>
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    </body>
+  </html>
